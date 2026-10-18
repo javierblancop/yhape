@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "YHAPE - Comida Saludable & Dulces Artesanales",
+  "short_name": "YHAPE",
+  "description": "Carta digital, pedidos y reservas por WhatsApp en Torremolinos",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fafaf9",
+  "theme_color": "#ea580c",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

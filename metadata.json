@@ -1,0 +1,6 @@
+{
+  "name": "YHAPE - Comida Saludable & Dulces Artesanales",
+  "description": "Restaurante de comida saludable, brunch brasileño, açai bowls, tapiocas, salados gourmet y repostería artesanal en Calle La Nogalera, Torremolinos con carta interactiva y reserva de mesas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
