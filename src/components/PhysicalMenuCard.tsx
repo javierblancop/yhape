@@ -76,37 +76,37 @@ export const PhysicalMenuCard: React.FC<PhysicalMenuCardProps> = ({ onDirectOrde
         </div>
 
         {/* Side Tabs Selector + Share Button */}
-        <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
-          <div className="flex items-center p-1.5 bg-white rounded-2xl border-2 border-amber-300 shadow-xs shrink-0 flex-wrap sm:flex-nowrap">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full sm:w-auto">
+          <div className="grid grid-cols-3 sm:flex items-center p-1 bg-white rounded-2xl border-2 border-amber-300 shadow-xs w-full sm:w-auto">
             <button
               onClick={() => setActiveSide('both')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+              className={`px-2 sm:px-3.5 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1 text-center ${
                 activeSide === 'both'
                   ? 'bg-amber-500 text-stone-950 shadow-sm'
                   : 'text-stone-700 hover:text-stone-950 hover:bg-stone-50'
               }`}
             >
-              <span>📖 Ver Ambas Caras</span>
+              <span>📖 Ambas</span>
             </button>
             <button
               onClick={() => setActiveSide('side1')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+              className={`px-2 sm:px-3.5 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1 text-center ${
                 activeSide === 'side1'
                   ? 'bg-amber-500 text-stone-950 shadow-sm'
                   : 'text-stone-700 hover:text-stone-950 hover:bg-stone-50'
               }`}
             >
-              <span>📜 Cara 1: Menú Completo</span>
+              <span>📜 Cara 1</span>
             </button>
             <button
               onClick={() => setActiveSide('side2')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+              className={`px-2 sm:px-3.5 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1 text-center ${
                 activeSide === 'side2'
                   ? 'bg-amber-500 text-stone-950 shadow-sm'
                   : 'text-stone-700 hover:text-stone-950 hover:bg-stone-50'
               }`}
             >
-              <span>🍧 Cara 2: Postres &amp; Açaí</span>
+              <span>🍧 Cara 2</span>
             </button>
           </div>
 

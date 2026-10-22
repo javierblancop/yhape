@@ -13,6 +13,7 @@ import {
   Heart,
   Check
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface InteractiveShowcaseItem {
   id: string;
@@ -212,14 +213,14 @@ export const InteractiveDishGallery: React.FC = () => {
           Toca o haz clic sobre cualquier fotografía para ampliarla, conocer sus ingredientes, rellenos y pedirla directamente por WhatsApp al restaurante.
         </p>
 
-        {/* Filter chips */}
-        <div className="flex flex-wrap items-center justify-center gap-2 pt-3">
+        {/* Filter chips with horizontal swipe on mobile */}
+        <div className="flex items-center sm:justify-center gap-2 pt-3 overflow-x-auto pb-2 scrollbar-none max-w-full px-2">
           {filterCategories.map((cat) => (
             <button
               key={cat.key}
               type="button"
               onClick={() => setActiveFilter(cat.key)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                 activeFilter === cat.key
                   ? 'bg-emerald-700 text-white shadow-xs scale-105'
                   : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
@@ -234,10 +235,12 @@ export const InteractiveDishGallery: React.FC = () => {
       {/* Interactive Grid with Zoom & Hover Effects */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {filteredItems.map((item) => (
-          <div
+          <motion.div
             key={item.id}
+            whileHover={{ y: -8, scale: 1.02 }}
+            transition={{ type: 'spring', stiffness: 350, damping: 25 }}
             onClick={() => setSelectedItem(item)}
-            className="group relative bg-white rounded-3xl overflow-hidden border-2 border-stone-200 hover:border-emerald-500 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between transform hover:-translate-y-1.5"
+            className="group relative bg-white rounded-3xl overflow-hidden border-2 border-stone-200 hover:border-amber-400 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between"
           >
             {/* Image Container with Badges */}
             <div className="relative aspect-4/3 w-full bg-stone-100 overflow-hidden">
@@ -245,7 +248,7 @@ export const InteractiveDishGallery: React.FC = () => {
                 src={item.image}
                 alt={item.title}
                 loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
 
               {/* Gradient Overlay */}
@@ -325,122 +328,128 @@ export const InteractiveDishGallery: React.FC = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
       {/* ======================================================== */}
       {/* INTERACTIVE MODAL FOR SELECTED DISH                      */}
       {/* ======================================================== */}
-      {selectedItem && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/75 backdrop-blur-xs transition-all"
-          onClick={() => setSelectedItem(null)}
-        >
+      <AnimatePresence>
+        {selectedItem && (
           <div
-            className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-amber-400 max-h-[90vh] flex flex-col"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/80 backdrop-blur-sm transition-all"
+            onClick={() => setSelectedItem(null)}
           >
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedItem(null)}
-              className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-white/90 text-stone-700 hover:text-stone-950 shadow-md cursor-pointer transition-all hover:scale-105"
-              aria-label="Cerrar ventana"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-amber-400 max-h-[90vh] flex flex-col"
+              onClick={(e) => e.stopPropagation()}
             >
-              <X className="w-5 h-5" />
-            </button>
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedItem(null)}
+                className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-white/90 text-stone-700 hover:text-stone-950 shadow-md cursor-pointer transition-all hover:scale-105"
+                aria-label="Cerrar ventana"
+              >
+                <X className="w-5 h-5" />
+              </button>
 
-            {/* Modal Image Header */}
-            <div className="relative aspect-16/9 w-full bg-stone-200 overflow-hidden shrink-0">
-              <img
-                src={selectedItem.image}
-                alt={selectedItem.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent" />
-              
-              <div className="absolute bottom-4 left-5 right-5 text-white">
-                <span className="inline-block bg-amber-400 text-stone-950 text-xs font-black uppercase px-2.5 py-0.5 rounded-md mb-1.5 shadow-sm">
-                  {selectedItem.categoryLabel}
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-black font-display text-white drop-shadow-sm">
-                  {selectedItem.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-amber-200 font-medium">
-                  {selectedItem.subtitle} · <strong className="font-mono text-white text-base">{selectedItem.priceDisplay}</strong>
-                </p>
-              </div>
-            </div>
-
-            {/* Modal Scrollable Body */}
-            <div className="p-6 space-y-5 overflow-y-auto flex-1">
-              {/* Badges */}
-              <div className="flex flex-wrap gap-2">
-                {selectedItem.badges.map((b, i) => (
-                  <span
-                    key={i}
-                    className="bg-amber-100 text-amber-950 text-xs font-black px-3 py-1 rounded-lg border border-amber-300"
-                  >
-                    {b}
+              {/* Modal Image Header */}
+              <div className="relative aspect-16/9 w-full bg-stone-200 overflow-hidden shrink-0">
+                <img
+                  src={selectedItem.image}
+                  alt={selectedItem.title}
+                  className="w-full h-full object-cover animate-ken-burns"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent" />
+                
+                <div className="absolute bottom-4 left-5 right-5 text-white">
+                  <span className="inline-block bg-amber-400 text-stone-950 text-xs font-black uppercase px-2.5 py-0.5 rounded-md mb-1.5 shadow-sm">
+                    {selectedItem.categoryLabel}
                   </span>
-                ))}
+                  <h3 className="text-2xl sm:text-3xl font-black font-display text-white drop-shadow-sm">
+                    {selectedItem.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-amber-200 font-medium">
+                    {selectedItem.subtitle} · <strong className="font-mono text-white text-base">{selectedItem.priceDisplay}</strong>
+                  </p>
+                </div>
               </div>
 
-              {/* Description */}
-              <div>
-                <h4 className="text-xs uppercase tracking-wider font-black text-stone-400 mb-1">
-                  Descripción del Plato
-                </h4>
-                <p className="text-sm text-stone-700 leading-relaxed font-medium">
-                  {selectedItem.description}
-                </p>
-              </div>
-
-              {/* Options & Highlights */}
-              <div className="bg-amber-50/70 p-4 rounded-2xl border border-amber-200 space-y-2">
-                <h4 className="text-xs uppercase tracking-wider font-black text-amber-950">
-                  Opciones y Detalles en Carta:
-                </h4>
-                <ul className="text-xs text-stone-800 space-y-1.5 font-semibold">
-                  {selectedItem.highlights.map((h, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-emerald-700 font-bold shrink-0">➔</span>
-                      <span>{h}</span>
-                    </li>
+              {/* Modal Scrollable Body */}
+              <div className="p-6 space-y-5 overflow-y-auto flex-1">
+                {/* Badges */}
+                <div className="flex flex-wrap gap-2">
+                  {selectedItem.badges.map((b, i) => (
+                    <span
+                      key={i}
+                      className="bg-amber-100 text-amber-950 text-xs font-black px-3 py-1 rounded-lg border border-amber-300"
+                    >
+                      {b}
+                    </span>
                   ))}
-                </ul>
+                </div>
+
+                {/* Description */}
+                <div>
+                  <h4 className="text-xs uppercase tracking-wider font-black text-stone-400 mb-1">
+                    Descripción del Plato
+                  </h4>
+                  <p className="text-sm text-stone-700 leading-relaxed font-medium">
+                    {selectedItem.description}
+                  </p>
+                </div>
+
+                {/* Options & Highlights */}
+                <div className="bg-amber-50/70 p-4 rounded-2xl border border-amber-200 space-y-2">
+                  <h4 className="text-xs uppercase tracking-wider font-black text-amber-950">
+                    Opciones y Detalles en Carta:
+                  </h4>
+                  <ul className="text-xs text-stone-800 space-y-1.5 font-semibold">
+                    {selectedItem.highlights.map((h, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="text-emerald-700 font-bold shrink-0">➔</span>
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Allergens notice */}
+                <div className="p-3 bg-stone-50 rounded-xl border border-stone-200 text-xs text-stone-600 flex items-center gap-2">
+                  <Info className="w-4 h-4 text-amber-600 shrink-0" />
+                  <span>
+                    <strong>Alérgenos:</strong> {selectedItem.allergens.join(', ')}. Consulta a nuestro personal para más detalles.
+                  </span>
+                </div>
               </div>
 
-              {/* Allergens notice */}
-              <div className="p-3 bg-stone-50 rounded-xl border border-stone-200 text-xs text-stone-600 flex items-center gap-2">
-                <Info className="w-4 h-4 text-amber-600 shrink-0" />
-                <span>
-                  <strong>Alérgenos:</strong> {selectedItem.allergens.join(', ')}. Consulta a nuestro personal para más detalles.
-                </span>
-              </div>
-            </div>
+              {/* Modal Sticky Footer Actions */}
+              <div className="p-4 sm:p-5 bg-stone-50 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+                <div className="text-center sm:text-left">
+                  <span className="text-xs text-stone-500 font-semibold block">Precio en Carta Oficial</span>
+                  <span className="text-xl font-black font-mono text-emerald-900">{selectedItem.priceDisplay}</span>
+                </div>
 
-            {/* Modal Sticky Footer Actions */}
-            <div className="p-4 sm:p-5 bg-stone-50 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
-              <div className="text-center sm:text-left">
-                <span className="text-xs text-stone-500 font-semibold block">Precio en Carta Oficial</span>
-                <span className="text-xl font-black font-mono text-emerald-900">{selectedItem.priceDisplay}</span>
+                <div className="flex items-center gap-2 w-full sm:w-auto">
+                  <button
+                    type="button"
+                    onClick={() => handleOrder(selectedItem)}
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs uppercase tracking-wider shadow-md transition-all cursor-pointer transform hover:scale-102"
+                  >
+                    <MessageCircle className="w-4 h-4 fill-white" />
+                    <span>Pedir por WhatsApp (+34 673 70 60 31)</span>
+                  </button>
+                </div>
               </div>
-
-              <div className="flex items-center gap-2 w-full sm:w-auto">
-                <button
-                  type="button"
-                  onClick={() => handleOrder(selectedItem)}
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs uppercase tracking-wider shadow-md transition-all cursor-pointer transform hover:scale-102"
-                >
-                  <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>Pedir por WhatsApp (+34 673 70 60 31)</span>
-                </button>
-              </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </div>
   );
 };

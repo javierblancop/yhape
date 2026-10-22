@@ -15,6 +15,10 @@ import { Footer } from './components/Footer';
 import { FloatingWhatsAppWidget } from './components/FloatingWhatsAppWidget';
 import { WelcomeToast } from './components/WelcomeToast';
 import { FadeInSection } from './components/FadeInSection';
+import { PageIntroSplash } from './components/PageIntroSplash';
+import { MobileBottomNav } from './components/MobileBottomNav';
+import { HalloweenDecor } from './components/HalloweenDecor';
+import { HalloweenSpecialSection } from './components/HalloweenSpecialSection';
 
 import { MENU_ITEMS } from './data/menuData';
 import { MenuItem, CartItem, Reservation } from './types/restaurant';
@@ -139,8 +143,14 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 flex flex-col selection:bg-amber-200 selection:text-stone-900">
+    <div className="min-h-screen bg-stone-50 flex flex-col selection:bg-amber-200 selection:text-stone-900 pb-20 md:pb-0 overflow-x-hidden">
       
+      {/* Initial Page Start Logo Splash Reveal */}
+      <PageIntroSplash />
+
+      {/* Floating Ambient Halloween Thematic Accents */}
+      <HalloweenDecor />
+
       {/* Top Header */}
       <Header
         cartItemCount={cartItemCount}
@@ -158,11 +168,19 @@ export default function App() {
           onOpenQRCode={() => setIsQRCodeOpen(true)}
         />
 
+        {/* Especial Fiestas de Halloween 2026 */}
+        <FadeInSection direction="up">
+          <HalloweenSpecialSection
+            onOpenReservation={() => setIsReservationOpen(true)}
+          />
+        </FadeInSection>
+
         {/* Dynamic Interactive Menu & Brazilian Tapas - Direct and immediately visible */}
         <DynamicMenu
           items={MENU_ITEMS}
           onSelectDish={(dish) => setSelectedDishForModal(dish)}
           onQuickAdd={handleQuickAdd}
+          onOpenQRCode={() => setIsQRCodeOpen(true)}
         />
 
         {/* Birthday & Celebration Pack Builder */}
@@ -239,9 +257,17 @@ export default function App() {
         onClose={() => setIsQRCodeOpen(false)}
       />
 
-      {/* Persistent Floating WhatsApp Access Widget */}
+      {/* Persistent Floating WhatsApp Access Widget (desktop) */}
       <FloatingWhatsAppWidget
         onOpenReservation={() => setIsReservationOpen(true)}
+      />
+
+      {/* Mobile Sticky Bottom Navigation Bar */}
+      <MobileBottomNav
+        cartItemCount={cartItemCount}
+        onOpenCart={() => setIsCartOpen(true)}
+        onOpenReservation={() => setIsReservationOpen(true)}
+        onOpenQRCode={() => setIsQRCodeOpen(true)}
       />
 
       {/* 3-Second Welcome Notification Toast */}

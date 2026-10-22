@@ -12,7 +12,7 @@ export const FloatingWhatsAppWidget: React.FC<FloatingWhatsAppWidgetProps> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end">
+    <div className="hidden md:flex fixed bottom-6 right-6 z-40 flex-col items-end">
       {/* Expanded Quick Action Popover */}
       {isOpen && (
         <div 

@@ -238,8 +238,8 @@ export const CustomerReviews: React.FC = () => {
           </div>
         </div>
 
-        {/* Filter Chips */}
-        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-stone-200">
+        {/* Filter Chips with mobile horizontal scroll */}
+        <div className="flex items-center gap-2 pt-2 border-t border-stone-200 overflow-x-auto pb-1 scrollbar-none max-w-full">
           <span className="text-xs font-bold text-stone-500 flex items-center gap-1 mr-2">
             <Filter className="w-3.5 h-3.5" />
             <span>Filtrar por:</span>

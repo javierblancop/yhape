@@ -11,24 +11,29 @@ import {
   X, 
   ChevronRight,
   Flame,
-  Utensils
+  Utensils,
+  QrCode
 } from 'lucide-react';
+import { motion } from 'motion/react';
 import { MenuItem } from '../types/restaurant';
 import { RESTAURANT_INFO } from '../data/menuData';
 import { openWhatsAppMessage } from '../utils/whatsapp';
 import { PhysicalMenuCard } from './PhysicalMenuCard';
 import { InteractiveDishGallery } from './InteractiveDishGallery';
+import { SpiderwebGraphic } from './SpiderwebGraphic';
 
 interface DynamicMenuProps {
   items: MenuItem[];
   onSelectDish: (dish: MenuItem) => void;
   onQuickAdd: (dish: MenuItem) => void;
+  onOpenQRCode?: () => void;
 }
 
 export const DynamicMenu: React.FC<DynamicMenuProps> = ({
   items,
   onSelectDish,
   onQuickAdd,
+  onOpenQRCode,
 }) => {
   const [copied, setCopied] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -99,9 +104,13 @@ export const DynamicMenu: React.FC<DynamicMenuProps> = ({
   };
 
   return (
-    <section id="menu" className="py-16 bg-gradient-to-b from-amber-50/40 via-white to-emerald-50/30 border-b border-stone-200 scroll-mt-20">
+    <section id="menu" className="relative overflow-hidden py-16 bg-gradient-to-b from-amber-50/40 via-white to-emerald-50/30 border-b border-stone-200 scroll-mt-20">
+      {/* Decorative Corner Spiderweb in Menu */}
+      <div className="absolute top-0 right-0 w-36 sm:w-56 h-36 sm:h-56 opacity-25 pointer-events-none select-none z-0">
+        <SpiderwebGraphic variant="corner-top-right" color="#f59e0b" className="w-full h-full" />
+      </div>
       <div id="carta" className="scroll-mt-24 pointer-events-none" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -139,6 +148,19 @@ export const DynamicMenu: React.FC<DynamicMenuProps> = ({
               )}
             </button>
 
+            {/* QR Code for Tables Print Button */}
+            {onOpenQRCode && (
+              <button
+                type="button"
+                onClick={onOpenQRCode}
+                className="px-4 py-3 rounded-2xl bg-amber-100 hover:bg-amber-200 text-stone-950 font-black text-xs uppercase tracking-wider shadow-sm hover:shadow-md transition-all inline-flex items-center gap-2 border-2 border-amber-300 hover:border-amber-400 cursor-pointer transform hover:scale-102"
+                title="Generar e imprimir el Código QR para las mesas"
+              >
+                <QrCode className="w-4 h-4 text-amber-900" />
+                <span>QR para Mesas</span>
+              </button>
+            )}
+
             <a
               href={RESTAURANT_INFO.whatsappCatalogUrl}
               target="_blank"
@@ -152,14 +174,15 @@ export const DynamicMenu: React.FC<DynamicMenuProps> = ({
           </div>
         </div>
 
-        {/* WhatsApp Official Catalog & Ordering Banner */}
-        <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-emerald-700 via-teal-800 to-emerald-900 text-white flex flex-col md:flex-row items-center justify-between gap-5 shadow-xl border-2 border-emerald-400">
+        {/* WhatsApp Official Catalog & Ordering Banner with Shimmer Motion */}
+        <div className="relative overflow-hidden p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-emerald-700 via-teal-800 to-emerald-900 text-white flex flex-col md:flex-row items-center justify-between gap-5 shadow-xl border-2 border-emerald-400 animate-shimmer">
           <div className="flex items-center gap-4 text-center md:text-left">
-            <div className="w-14 h-14 rounded-2xl bg-amber-400 text-emerald-950 flex items-center justify-center shrink-0 shadow-md font-bold">
+            <div className="w-14 h-14 rounded-2xl bg-amber-400 text-emerald-950 flex items-center justify-center shrink-0 shadow-md font-bold animate-pulse-glow">
               <MessageCircle className="w-8 h-8 text-emerald-950 fill-emerald-950" />
             </div>
             <div className="space-y-1">
               <div className="inline-flex items-center gap-2 bg-amber-400 text-stone-950 px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-emerald-900 animate-ping shrink-0" />
                 <span>Canal Exclusivo de Pedidos y Reservas</span>
               </div>
               <h3 className="text-base sm:text-lg font-black text-white font-display">
@@ -175,7 +198,7 @@ export const DynamicMenu: React.FC<DynamicMenuProps> = ({
             href={RESTAURANT_INFO.whatsappCatalogUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3.5 rounded-2xl bg-amber-400 hover:bg-yellow-300 text-stone-950 font-black text-xs uppercase tracking-wider shadow-lg transition-all whitespace-nowrap cursor-pointer transform hover:scale-105 inline-flex items-center gap-2 border border-amber-300"
+            className="animate-shimmer px-6 py-3.5 rounded-2xl bg-amber-400 hover:bg-yellow-300 text-stone-950 font-black text-xs uppercase tracking-wider shadow-lg transition-all whitespace-nowrap cursor-pointer transform hover:scale-105 inline-flex items-center gap-2 border border-amber-300"
           >
             <ShoppingBag className="w-4 h-4 text-stone-950" />
             <span>Abrir Catálogo: wa.me/c/34673706031</span>
@@ -216,8 +239,8 @@ export const DynamicMenu: React.FC<DynamicMenuProps> = ({
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Escribe un plato o ingrediente (ej: coxinha, queso, açaí, dulce de leche, yuca, maracuyá...)"
-              className="w-full pl-12 pr-12 py-3.5 bg-stone-50 hover:bg-white focus:bg-white border-2 border-stone-200 focus:border-amber-500 focus:ring-4 focus:ring-amber-100 rounded-2xl text-sm sm:text-base font-semibold text-stone-900 transition-all shadow-inner outline-hidden"
+              placeholder="Escribe un plato o ingrediente (ej: coxinha, queso, açaí, yuca...)"
+              className="w-full pl-12 pr-12 py-3.5 bg-stone-50 hover:bg-white focus:bg-white border-2 border-stone-200 focus:border-amber-500 focus:ring-4 focus:ring-amber-100 rounded-2xl text-base font-semibold text-stone-900 transition-all shadow-inner outline-hidden"
             />
             {searchQuery && (
               <button

@@ -9,42 +9,42 @@ export const StoryAndAmbience: React.FC = () => {
         {/* Story Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
-          {/* Left Column: Visual Bento with colorful gradient borders */}
+          {/* Left Column: Visual Bento with colorful gradient borders & floating motion */}
           <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-            <div className="space-y-4">
-              <div className="rounded-2xl overflow-hidden shadow-md border-2 border-amber-300 aspect-4/3 bg-stone-100 transform hover:scale-102 transition-transform">
+            <div className="space-y-4 animate-float-slow">
+              <div className="rounded-2xl overflow-hidden shadow-md border-2 border-amber-300 aspect-4/3 bg-stone-100 transform hover:scale-105 transition-all">
                 <img
-                  src="/src/assets/images/yhape_tapioca_fit_1792219576272.jpg"
+                  src="/images/yhape_tapioca_fit_1792219576272.jpg"
                   alt="Tapioca artesanal saludable rellena de aguacate en YHAPE"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                 />
               </div>
-              <div className="rounded-2xl overflow-hidden shadow-md border-2 border-orange-300 aspect-1/1 bg-stone-100 transform hover:scale-102 transition-transform">
+              <div className="rounded-2xl overflow-hidden shadow-md border-2 border-orange-300 aspect-1/1 bg-stone-100 transform hover:scale-105 transition-all">
                 <img
-                  src="/src/assets/images/yhape_salgados_fiesta_1792219576390.jpg"
+                  src="/images/yhape_salgados_fiesta_1792219576390.jpg"
                   alt="Salgados y brigadeiros gourmet tradicionales"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                 />
               </div>
             </div>
 
-            <div className="space-y-4 pt-6">
-              <div className="rounded-2xl overflow-hidden shadow-md border-2 border-purple-300 aspect-1/1 bg-stone-100 transform hover:scale-102 transition-transform">
+            <div className="space-y-4 pt-6 animate-float-reverse">
+              <div className="rounded-2xl overflow-hidden shadow-md border-2 border-purple-300 aspect-1/1 bg-stone-100 transform hover:scale-105 transition-all">
                 <img
-                  src="/src/assets/images/yhape_acai_bowl_1792219575515.jpg"
+                  src="/images/yhape_acai_bowl_1792219575515.jpg"
                   alt="Açai bowl orgánico con frutas"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                 />
               </div>
-              <div className="rounded-2xl overflow-hidden shadow-md border-2 border-emerald-300 aspect-4/3 bg-stone-100 transform hover:scale-102 transition-transform">
+              <div className="rounded-2xl overflow-hidden shadow-md border-2 border-emerald-300 aspect-4/3 bg-stone-100 transform hover:scale-105 transition-all">
                 <img
-                  src="/src/assets/images/yhape_poke_bowl_saludable_1792219591423.jpg"
-                  alt="Poke bowl de quinoa y salmón"
+                  src="/images/yhape_pastel.jpg"
+                  alt="Pasteles de feria crujientes brasileños"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                 />
               </div>
             </div>

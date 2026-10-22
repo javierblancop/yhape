@@ -429,7 +429,7 @@ export const TableReservationModal: React.FC<TableReservationModalProps> = ({
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
                     placeholder="Ej: Laura Gómez"
-                    className="w-full text-xs px-4 py-2.5 bg-stone-50 border-2 border-stone-200 rounded-xl focus:outline-hidden focus:bg-white focus:border-emerald-600 font-semibold"
+                    className="w-full text-base sm:text-sm px-4 py-3 bg-stone-50 border-2 border-stone-200 rounded-xl focus:outline-hidden focus:bg-white focus:border-emerald-600 font-semibold"
                   />
                 </div>
 
@@ -445,7 +445,7 @@ export const TableReservationModal: React.FC<TableReservationModalProps> = ({
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="Ej: 612 345 678"
-                      className="w-full text-xs px-4 py-2.5 bg-stone-50 border-2 border-stone-200 rounded-xl focus:outline-hidden focus:bg-white focus:border-emerald-600 font-semibold"
+                      className="w-full text-base sm:text-sm px-4 py-3 bg-stone-50 border-2 border-stone-200 rounded-xl focus:outline-hidden focus:bg-white focus:border-emerald-600 font-semibold"
                     />
                   </div>
 
@@ -459,7 +459,7 @@ export const TableReservationModal: React.FC<TableReservationModalProps> = ({
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="nombre@ejemplo.com"
-                      className="w-full text-xs px-4 py-2.5 bg-stone-50 border-2 border-stone-200 rounded-xl focus:outline-hidden focus:bg-white focus:border-emerald-600 font-semibold"
+                      className="w-full text-base sm:text-sm px-4 py-3 bg-stone-50 border-2 border-stone-200 rounded-xl focus:outline-hidden focus:bg-white focus:border-emerald-600 font-semibold"
                     />
                   </div>
                 </div>
@@ -472,7 +472,7 @@ export const TableReservationModal: React.FC<TableReservationModalProps> = ({
                     id="cust-occasion"
                     value={occasion}
                     onChange={(e) => setOccasion(e.target.value)}
-                    className="w-full text-xs px-4 py-2.5 bg-stone-50 border-2 border-stone-200 rounded-xl focus:outline-hidden focus:bg-white focus:border-emerald-600 font-bold"
+                    className="w-full text-base sm:text-sm px-4 py-3 bg-stone-50 border-2 border-stone-200 rounded-xl focus:outline-hidden focus:bg-white focus:border-emerald-600 font-bold"
                   >
                     <option value="Casual / Comida saludable">Comida / Brunch casual</option>
                     <option value="Celebración de Cumpleaños">¡Cumpleaños!</option>
@@ -492,7 +492,7 @@ export const TableReservationModal: React.FC<TableReservationModalProps> = ({
                     value={specialRequests}
                     onChange={(e) => setSpecialRequests(e.target.value)}
                     placeholder="Ej: Necesitamos trona para bebé, comensal celíaco, mesa junto a la ventana..."
-                    className="w-full text-xs px-4 py-2.5 bg-stone-50 border-2 border-stone-200 rounded-xl focus:outline-hidden focus:bg-white focus:border-emerald-600 font-semibold"
+                    className="w-full text-base sm:text-sm px-4 py-3 bg-stone-50 border-2 border-stone-200 rounded-xl focus:outline-hidden focus:bg-white focus:border-emerald-600 font-semibold"
                   />
                 </div>
               </div>
