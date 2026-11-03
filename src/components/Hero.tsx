@@ -17,7 +17,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import { RESTAURANT_INFO } from '../data/menuData';
 import { RestaurantStatusLegend } from './RestaurantStatusLegend';
-import { SpiderwebGraphic } from './SpiderwebGraphic';
+import { ChristmasGarland } from './ChristmasGarland';
 
 interface HeroProps {
   onOpenReservation: () => void;
@@ -147,55 +147,59 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         
         {/* ======================================================== */}
-        {/* BANNER 1: ESPECIAL HALLOWEEN (Extra Large & Highly Visible)*/}
+        {/* BANNER 1: ESPECIAL NAVIDAD & FIN DE AÑO (Extra Large & Highly Visible) */}
         {/* ======================================================== */}
-        <div className="relative overflow-hidden rounded-3xl p-1 bg-gradient-to-r from-orange-500 via-purple-600 to-amber-500 animate-gradient-shift shadow-xl border-2 border-orange-400">
+        <div className="relative overflow-hidden rounded-3xl p-1 bg-gradient-to-r from-red-600 via-amber-500 to-emerald-600 animate-gradient-shift shadow-xl border-2 border-amber-400">
           <div className="flex flex-wrap items-center justify-between gap-4 p-4 sm:px-6 sm:py-4 rounded-[22px] bg-stone-950 text-white animate-shimmer relative overflow-hidden">
             
-            {/* Decorative Spiderwebs in Banner Corners */}
-            <SpiderwebGraphic variant="corner-top-right" color="#f97316" className="w-24 sm:w-36 h-24 sm:h-36 opacity-35 absolute top-0 right-0 pointer-events-none" />
-            <SpiderwebGraphic variant="corner-bottom-left" color="#c084fc" className="w-20 sm:w-28 h-20 sm:h-28 opacity-25 absolute bottom-0 left-0 pointer-events-none" />
+            {/* Decorative Pine Garlands in Banner Corners */}
+            <div className="absolute top-0 right-0 w-24 sm:w-36 h-24 sm:h-36 opacity-60 pointer-events-none select-none">
+              <ChristmasGarland variant="corner-right" className="w-full h-full" />
+            </div>
+            <div className="absolute top-0 left-0 w-20 sm:w-28 h-20 sm:h-28 opacity-60 pointer-events-none select-none">
+              <ChristmasGarland variant="corner-left" className="w-full h-full" />
+            </div>
 
-            {/* Background Spooky Ambient Decors */}
+            {/* Background Festive Ambient Decors */}
             <div className="absolute -right-4 -bottom-4 text-7xl opacity-20 pointer-events-none select-none">
-              🎃
+              🎄
             </div>
             <div className="absolute left-1/3 -top-6 text-6xl opacity-15 pointer-events-none select-none">
-              🦇
+              ⭐
             </div>
 
             <div className="flex items-center gap-3.5 text-sm sm:text-base font-black text-white relative z-10">
-              <span className="text-3xl sm:text-4xl animate-bounce filter drop-shadow-[0_0_12px_rgba(249,115,22,0.9)]">
-                🎃
+              <span className="text-3xl sm:text-4xl animate-bounce filter drop-shadow-[0_0_12px_rgba(239,68,68,0.9)]">
+                🎄
               </span>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-stone-950 text-xs sm:text-sm font-black uppercase px-2.5 py-0.5 rounded-full shadow-md">
-                    ¡Fiestas de Halloween 2026!
+                  <span className="bg-gradient-to-r from-red-600 to-amber-500 text-white text-xs sm:text-sm font-black uppercase px-2.5 py-0.5 rounded-full shadow-md">
+                    ¡Fiestas de Navidad &amp; Reyes!
                   </span>
-                  <span className="text-xl">👻</span>
+                  <span className="text-xl">🎅</span>
                 </div>
                 <p className="text-xs sm:text-sm text-stone-200 font-medium pt-1">
-                  Celebra con nuestras tapas de terror, <strong className="text-orange-400 font-black">Caipirinhas de Vampiro</strong> y packs de catering para disfraces.
+                  Celebra con nuestras tapas de fiesta, <strong className="text-amber-400 font-black">Caipirinhas Navideñas</strong> y bandejas de catering para tus reuniones.
                 </p>
               </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-2.5 relative z-10">
               <a
-                href="#halloween"
-                className="text-xs sm:text-sm font-black text-stone-950 bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-400 hover:from-orange-300 hover:to-yellow-300 px-4 py-2.5 rounded-2xl transition-all hover:scale-105 shadow-lg inline-flex items-center gap-2 cursor-pointer transform border-2 border-orange-200"
+                href="#navidad"
+                className="text-xs sm:text-sm font-black text-stone-950 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-300 hover:from-amber-300 hover:to-yellow-200 px-4 py-2.5 rounded-2xl transition-all hover:scale-105 shadow-lg inline-flex items-center gap-2 cursor-pointer transform border-2 border-white/50"
               >
-                <span className="text-lg">🎃</span>
-                <span>Ver Menú Especial Halloween</span>
-                <span className="text-lg">🕸️</span>
+                <span className="text-lg">🎄</span>
+                <span>Ver Menú Especial Navidad</span>
+                <span className="text-lg">⭐</span>
               </a>
 
               <a
                 href={RESTAURANT_INFO.whatsappCatalogUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs sm:text-sm font-black text-white bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-600 hover:to-indigo-600 px-4 py-2.5 rounded-2xl transition-all hover:scale-105 shadow-lg inline-flex items-center gap-2 cursor-pointer transform border border-purple-400"
+                className="text-xs sm:text-sm font-black text-white bg-gradient-to-r from-emerald-700 to-teal-700 hover:from-emerald-600 hover:to-teal-600 px-4 py-2.5 rounded-2xl transition-all hover:scale-105 shadow-lg inline-flex items-center gap-2 cursor-pointer transform border border-emerald-400"
               >
                 <ShoppingBag className="w-4 h-4 text-amber-300" />
                 <span>Pedir por WhatsApp</span>
@@ -292,14 +296,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
                 <span>Ver Menú &amp; Carta</span>
               </a>
 
-              {/* Halloween Special Quick Action (Bigger & High Contrast) */}
+              {/* Christmas Special Quick Action (Bigger & High Contrast) */}
               <a
-                href="#halloween"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 text-xs sm:text-sm font-black uppercase tracking-wider text-stone-950 bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-400 hover:from-orange-300 hover:to-yellow-300 rounded-2xl shadow-xl hover:shadow-2xl transition-all cursor-pointer whitespace-nowrap transform hover:-translate-y-1 border-2 border-orange-300 ring-2 ring-orange-200"
+                href="#navidad"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 text-xs sm:text-sm font-black uppercase tracking-wider text-white bg-gradient-to-r from-red-600 via-amber-500 to-emerald-600 hover:from-red-700 hover:to-emerald-700 rounded-2xl shadow-xl hover:shadow-2xl transition-all cursor-pointer whitespace-nowrap transform hover:-translate-y-1 border-2 border-amber-300 ring-2 ring-red-200"
               >
-                <span className="text-xl animate-bounce">🎃</span>
-                <span>¡Especial Fiestas Halloween!</span>
-                <span className="text-xl">👻</span>
+                <span className="text-xl animate-bounce">🎄</span>
+                <span>¡Especial Fiestas de Navidad!</span>
+                <span className="text-xl">⭐</span>
               </a>
             </div>
 
@@ -345,19 +349,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
           >
             
             {/* Colorful glow border with hero photo */}
-            <div className="relative w-full rounded-3xl overflow-visible shadow-2xl p-1.5 bg-gradient-to-tr from-amber-500 via-orange-500 to-purple-600 animate-gradient-shift group">
+            <div className="relative w-full rounded-3xl overflow-visible shadow-2xl p-1.5 bg-gradient-to-tr from-red-600 via-amber-400 to-emerald-600 animate-gradient-shift group">
               
-              {/* Floating Halloween Festive Badge (Highly Visible) */}
+              {/* Floating Christmas Festive Badge (Highly Visible) */}
               <motion.a
-                href="#halloween"
+                href="#navidad"
                 animate={{ y: [0, -6, 0] }}
                 transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
-                className="absolute -top-4 -right-2 sm:-right-4 bg-stone-950 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-2xl shadow-2xl border-2 border-orange-400 flex items-center gap-2 z-20 hover:scale-105 transition-transform cursor-pointer"
+                className="absolute -top-4 -right-2 sm:-right-4 bg-stone-950 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-2xl shadow-2xl border-2 border-amber-400 flex items-center gap-2 z-20 hover:scale-105 transition-transform cursor-pointer"
               >
-                <span className="text-2xl sm:text-3xl animate-bounce">🎃</span>
+                <span className="text-2xl sm:text-3xl animate-bounce">🎄</span>
                 <div className="text-left leading-tight">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-orange-400 block">
-                    ¡Halloween 2026! 🦇
+                  <span className="text-[10px] font-black uppercase tracking-wider text-amber-400 block">
+                    ¡Navidad en YHAPE! ⭐
                   </span>
                   <span className="text-xs font-black text-white">
                     Tapas &amp; Caipirinhas
@@ -406,9 +410,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
               {/* Main Photo Frame with Ken Burns Effect */}
               <div className="relative rounded-[22px] overflow-hidden bg-stone-900 h-[310px] sm:h-[400px] lg:h-[450px]">
                 
-                {/* Decorative Spooky Corner Spiderweb on Photo */}
-                <div className="absolute top-0 left-0 w-28 sm:w-36 h-28 sm:h-36 opacity-50 pointer-events-none select-none z-10">
-                  <SpiderwebGraphic variant="corner-top-left" color="#ffffff" hasSpider={true} className="w-full h-full" />
+                {/* Decorative Christmas Garland on Photo */}
+                <div className="absolute top-0 left-0 w-28 sm:w-36 h-28 sm:h-36 opacity-75 pointer-events-none select-none z-10">
+                  <ChristmasGarland variant="corner-left" className="w-full h-full" />
                 </div>
 
                 {/* Crossfade Slides with Zoom Motion */}

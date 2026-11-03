@@ -21,18 +21,18 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
       className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-amber-200/90 shadow-[0_-4px_25px_rgba(0,0,0,0.1)] pb-safe transition-all"
     >
       <div className="grid grid-cols-5 items-center h-16 px-1.5 max-w-md mx-auto">
-        {/* Tab 1: Menú & Halloween (Extra Large & Highly Visible) */}
+        {/* Tab 1: Menú & Navidad (Extra Large & Highly Visible) */}
         <a
-          href="#halloween"
-          className="flex flex-col items-center justify-center gap-0.5 h-full text-orange-700 hover:text-orange-950 active:scale-95 transition-transform relative bg-orange-100/70 rounded-2xl mx-1 my-1 border border-orange-300 shadow-2xs"
-          aria-label="Ir al Especial de Halloween y Menú"
+          href="#navidad"
+          className="flex flex-col items-center justify-center gap-0.5 h-full text-red-700 hover:text-red-950 active:scale-95 transition-transform relative bg-red-100/70 rounded-2xl mx-1 my-1 border border-red-300 shadow-2xs"
+          aria-label="Ir al Especial de Navidad y Menú"
         >
           <div className="relative flex items-center justify-center">
-            <span className="text-2xl animate-bounce filter drop-shadow-[0_0_8px_rgba(249,115,22,0.8)]">🎃</span>
-            <span className="absolute -top-1 -right-2 text-[10px] animate-pulse">✨</span>
+            <span className="text-2xl animate-bounce filter drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]">🎄</span>
+            <span className="absolute -top-1 -right-2 text-[10px] animate-pulse">⭐</span>
           </div>
-          <span className="text-[10px] font-black uppercase tracking-tight text-orange-950">
-            Halloween
+          <span className="text-[10px] font-black uppercase tracking-tight text-red-950">
+            Navidad
           </span>
         </a>
 

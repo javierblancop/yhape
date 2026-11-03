@@ -17,8 +17,8 @@ import { WelcomeToast } from './components/WelcomeToast';
 import { FadeInSection } from './components/FadeInSection';
 import { PageIntroSplash } from './components/PageIntroSplash';
 import { MobileBottomNav } from './components/MobileBottomNav';
-import { HalloweenDecor } from './components/HalloweenDecor';
-import { HalloweenSpecialSection } from './components/HalloweenSpecialSection';
+import { ChristmasDecor } from './components/ChristmasDecor';
+import { ChristmasSpecialSection } from './components/ChristmasSpecialSection';
 
 import { MENU_ITEMS } from './data/menuData';
 import { MenuItem, CartItem, Reservation } from './types/restaurant';
@@ -148,8 +148,8 @@ export default function App() {
       {/* Initial Page Start Logo Splash Reveal */}
       <PageIntroSplash />
 
-      {/* Floating Ambient Halloween Thematic Accents */}
-      <HalloweenDecor />
+      {/* Floating Ambient Christmas Thematic Accents */}
+      <ChristmasDecor />
 
       {/* Top Header */}
       <Header
@@ -168,9 +168,9 @@ export default function App() {
           onOpenQRCode={() => setIsQRCodeOpen(true)}
         />
 
-        {/* Especial Fiestas de Halloween 2026 */}
+        {/* Especial Fiestas de Navidad & Fin de Año */}
         <FadeInSection direction="up">
-          <HalloweenSpecialSection
+          <ChristmasSpecialSection
             onOpenReservation={() => setIsReservationOpen(true)}
           />
         </FadeInSection>

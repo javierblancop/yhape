@@ -22,27 +22,27 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-amber-200/80 shadow-xs transition-all">
-      {/* Top Festive Promo Strip with Halloween & Brazilian Colors (Bigger & High Visibility) */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-orange-600 via-purple-700 to-amber-600 animate-gradient-shift text-white text-xs sm:text-sm font-black py-3 px-4 text-center tracking-wide flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 shadow-md animate-shimmer border-b-2 border-orange-400">
-        <span className="flex items-center gap-2 bg-black/75 text-orange-300 px-3 py-1 rounded-full text-xs uppercase tracking-wider font-extrabold shadow-sm border border-orange-400">
-          <span className="text-base sm:text-lg animate-bounce">🎃</span>
-          <span>¡ESPECIAL HALLOWEEN!</span>
-          <span className="text-base sm:text-lg">👻</span>
+      {/* Top Festive Promo Strip with Christmas & Brazilian Colors (Festive & High Visibility) */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-red-700 via-amber-600 to-emerald-700 animate-gradient-shift text-white text-xs sm:text-sm font-black py-3 px-4 text-center tracking-wide flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 shadow-md animate-shimmer border-b-2 border-amber-400">
+        <span className="flex items-center gap-2 bg-black/70 text-amber-300 px-3 py-1 rounded-full text-xs uppercase tracking-wider font-extrabold shadow-sm border border-amber-400">
+          <span className="text-base sm:text-lg animate-bounce">🎄</span>
+          <span>¡ESPECIAL NAVIDAD &amp; FIN DE AÑO!</span>
+          <span className="text-base sm:text-lg">⭐</span>
         </span>
         <span className="text-white drop-shadow-md font-black text-xs sm:text-sm flex items-center gap-1.5">
-          <span>🦇</span>
-          <span>¡Fiestas de Halloween en YHAPE! Tapas temáticas, Caipirinhas de Vampiro y Catering para disfraces</span>
-          <span>🕸️</span>
+          <span>🎅</span>
+          <span>¡Celebra la Navidad en YHAPE! Cenas de empresa, salgados artesanos y catering festivo</span>
+          <span>🎁</span>
         </span>
-        <span className="hidden lg:inline text-orange-200 font-bold text-xs bg-black/40 px-2.5 py-0.5 rounded-md">
+        <span className="hidden lg:inline text-amber-200 font-bold text-xs bg-black/40 px-2.5 py-0.5 rounded-md">
           Calle La Nogalera 105, Torremolinos
         </span>
         <a 
-          href="#halloween"
-          className="bg-gradient-to-r from-orange-400 to-amber-400 hover:from-orange-300 hover:to-amber-300 text-stone-950 px-3.5 py-1 rounded-full shadow-lg font-black hover:scale-105 transition-all inline-flex items-center gap-1.5 cursor-pointer ml-1 text-xs border border-white/50"
+          href="#navidad"
+          className="bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-300 hover:to-yellow-300 text-stone-950 px-3.5 py-1 rounded-full shadow-lg font-black hover:scale-105 transition-all inline-flex items-center gap-1.5 cursor-pointer ml-1 text-xs border border-white/50"
         >
-          <span className="text-sm">🎃</span>
-          <span>Ver Tapas de Halloween</span>
+          <span className="text-sm">🎄</span>
+          <span>Ver Menú Navideño</span>
         </a>
 
         {/* WhatsApp direct catalog */}
@@ -76,18 +76,18 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Zone 1: Brand Zone with Official YHAPE TAPAS & PICOTEO Logo */}
           <a href="#" className="flex items-center gap-2 group whitespace-nowrap shrink-0 relative" aria-label="YHAPE Tapas & Picoteo">
             <YhapeLogo variant="compact" />
-            <span className="absolute -top-1 -right-3 text-lg animate-pulse" title="¡Feliz Halloween!">🎃</span>
+            <span className="absolute -top-1 -right-3 text-lg animate-pulse" title="¡Feliz Navidad!">🎄</span>
           </a>
 
           {/* Zone 2: Navigation links */}
           <nav className="hidden lg:flex items-center gap-4 text-sm font-bold text-stone-700">
             <a 
-              href="#halloween" 
-              className="text-stone-950 bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500 hover:from-orange-500 hover:to-amber-500 px-3.5 py-2 rounded-2xl transition-all whitespace-nowrap shrink-0 flex items-center gap-2 font-black shadow-md transform hover:scale-105 border-2 border-orange-400 ring-2 ring-orange-200/60"
+              href="#navidad" 
+              className="text-white bg-gradient-to-r from-red-600 via-amber-500 to-emerald-600 hover:from-red-700 hover:to-emerald-700 px-3.5 py-2 rounded-2xl transition-all whitespace-nowrap shrink-0 flex items-center gap-2 font-black shadow-md transform hover:scale-105 border-2 border-amber-300 ring-2 ring-red-200/60"
             >
-              <span className="text-xl animate-bounce">🎃</span>
-              <span className="text-sm font-black tracking-wide">Especial Halloween</span>
-              <span className="text-xl">👻</span>
+              <span className="text-xl animate-bounce">🎄</span>
+              <span className="text-sm font-black tracking-wide">Especial Navidad</span>
+              <span className="text-xl">⭐</span>
             </a>
             <a 
               href="#menu" 
@@ -218,17 +218,17 @@ export const Header: React.FC<HeaderProps> = ({
 
           <nav className="flex flex-col gap-2 font-bold text-stone-700">
             <a
-              href="#halloween"
+              href="#navidad"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-3.5 rounded-2xl bg-gradient-to-r from-orange-500 via-amber-500 to-purple-600 text-stone-950 font-black text-sm uppercase tracking-wider flex items-center justify-between shadow-lg border-2 border-orange-300 ring-2 ring-orange-200"
+              className="px-4 py-3.5 rounded-2xl bg-gradient-to-r from-red-600 via-amber-500 to-emerald-600 text-white font-black text-sm uppercase tracking-wider flex items-center justify-between shadow-lg border-2 border-amber-300 ring-2 ring-red-200"
             >
               <div className="flex items-center gap-2.5">
-                <span className="text-2xl animate-bounce">🎃</span>
-                <span>¡Especial Fiestas Halloween!</span>
+                <span className="text-2xl animate-bounce">🎄</span>
+                <span>¡Especial Fiestas de Navidad!</span>
               </div>
               <div className="flex items-center gap-1 text-xl">
-                <span>🦇</span>
-                <span>👻</span>
+                <span>⭐</span>
+                <span>🎅</span>
               </div>
             </a>
             <a

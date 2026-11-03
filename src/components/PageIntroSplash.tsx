@@ -57,11 +57,11 @@ export const PageIntroSplash: React.FC = () => {
       {/* Main Logo Card Container */}
       <div className="relative max-w-sm w-full bg-white/10 backdrop-blur-md rounded-3xl p-8 border-2 border-amber-400/60 shadow-2xl text-center space-y-6 transform transition-transform">
         
-        {/* Halloween festive badge (Enlarged) */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-orange-400 via-amber-400 to-purple-500 text-stone-950 font-black text-xs uppercase tracking-widest shadow-lg border-2 border-orange-300">
-          <span className="text-lg animate-bounce">🎃</span>
-          <span>¡FIESTAS DE HALLOWEEN 2026!</span>
-          <span className="text-lg">👻</span>
+        {/* Christmas festive badge (Enlarged) */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-red-600 via-amber-500 to-emerald-600 text-white font-black text-xs uppercase tracking-widest shadow-lg border-2 border-amber-300">
+          <span className="text-lg animate-bounce">🎄</span>
+          <span>¡FELICES FIESTAS DE NAVIDAD!</span>
+          <span className="text-lg">⭐</span>
         </div>
 
         {/* The Official YHAPE Logo with glowing frame */}
@@ -71,7 +71,7 @@ export const PageIntroSplash: React.FC = () => {
             alt="Logotipo Oficial YHAPE Tapas & Picoteo"
             className="w-full h-full object-contain filter drop-shadow-sm transition-transform hover:scale-105"
           />
-          <span className="absolute -top-3 -right-3 text-3xl animate-bounce">🎃</span>
+          <span className="absolute -top-3 -right-3 text-3xl animate-bounce">🎄</span>
         </div>
 
         {/* Slogan and Brand Subtitle */}
@@ -82,10 +82,10 @@ export const PageIntroSplash: React.FC = () => {
           <p className="text-xs font-bold text-amber-300 tracking-wider uppercase">
             by K. Saez
           </p>
-          <div className="pt-2 flex items-center justify-center gap-2 text-sm text-orange-200 font-extrabold">
-            <span className="text-xl">🦇</span>
-            <span>Tapas de Terror &amp; Caipirinhas de Vampiro</span>
-            <span className="text-xl">🕷️</span>
+          <div className="pt-2 flex items-center justify-center gap-2 text-sm text-amber-200 font-extrabold">
+            <span className="text-xl">🎅</span>
+            <span>Tapas Festivas &amp; Brindis Navideño Brasileño</span>
+            <span className="text-xl">✨</span>
           </div>
           <p className="text-[11px] text-stone-400 font-medium">
             Calle La Nogalera, 105 · Torremolinos

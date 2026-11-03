@@ -94,11 +94,11 @@ export const BirthdayPartyCalculator: React.FC = () => {
                     <span className="text-purple-600 font-black text-base shrink-0">🍬</span>
                     <span><strong>Mesa dulce brasileña:</strong> brigadeiros gourmet tradicionales y beijinhos de coco.</span>
                   </li>
-                  <li className="flex items-start gap-3 p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-orange-100 via-amber-100 to-purple-100 border-2 border-orange-400 text-stone-950 shadow-sm">
-                    <span className="text-3xl shrink-0 animate-bounce">🎃</span>
+                  <li className="flex items-start gap-3 p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-red-100 via-amber-100 to-emerald-100 border-2 border-red-500 text-stone-950 shadow-sm">
+                    <span className="text-3xl shrink-0 animate-bounce">🎄</span>
                     <span className="text-xs sm:text-sm leading-snug">
-                      <strong className="text-orange-950 font-black block text-sm pb-0.5">¡Especial Fiestas de Halloween & Disfraces! 👻 🦇</strong>
-                      Catering de bandejas de 50 o 100 salgados artesanos, coxinhas y caipirinhas para tus fiestas privadas en Torremolinos.
+                      <strong className="text-red-950 font-black block text-sm pb-0.5">¡Especial Cenas de Navidad &amp; Nochevieja! 🎅 ⭐</strong>
+                      Catering de bandejas de 50 o 100 salgados artesanos, coxinhas y caipirinhas festivas para tus reuniones de empresa y comidas familiares en Torremolinos.
                     </span>
                   </li>
                 </ul>

@@ -20,7 +20,7 @@ import { RESTAURANT_INFO } from '../data/menuData';
 import { openWhatsAppMessage } from '../utils/whatsapp';
 import { PhysicalMenuCard } from './PhysicalMenuCard';
 import { InteractiveDishGallery } from './InteractiveDishGallery';
-import { SpiderwebGraphic } from './SpiderwebGraphic';
+import { ChristmasGarland } from './ChristmasGarland';
 
 interface DynamicMenuProps {
   items: MenuItem[];
@@ -105,9 +105,9 @@ export const DynamicMenu: React.FC<DynamicMenuProps> = ({
 
   return (
     <section id="menu" className="relative overflow-hidden py-16 bg-gradient-to-b from-amber-50/40 via-white to-emerald-50/30 border-b border-stone-200 scroll-mt-20">
-      {/* Decorative Corner Spiderweb in Menu */}
-      <div className="absolute top-0 right-0 w-36 sm:w-56 h-36 sm:h-56 opacity-25 pointer-events-none select-none z-0">
-        <SpiderwebGraphic variant="corner-top-right" color="#f59e0b" className="w-full h-full" />
+      {/* Decorative Corner Christmas Pine Garland in Menu */}
+      <div className="absolute top-0 right-0 w-36 sm:w-56 h-36 sm:h-56 opacity-60 pointer-events-none select-none z-0">
+        <ChristmasGarland variant="corner-right" className="w-full h-full" />
       </div>
       <div id="carta" className="scroll-mt-24 pointer-events-none" />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
