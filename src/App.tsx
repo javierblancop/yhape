@@ -19,6 +19,7 @@ import { PageIntroSplash } from './components/PageIntroSplash';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { ChristmasDecor } from './components/ChristmasDecor';
 import { ChristmasSpecialSection } from './components/ChristmasSpecialSection';
+import { ShareModal } from './components/ShareModal';
 
 import { MENU_ITEMS } from './data/menuData';
 import { MenuItem, CartItem, Reservation } from './types/restaurant';
@@ -49,6 +50,7 @@ export default function App() {
   const [isReservationOpen, setIsReservationOpen] = useState(false);
   const [isMyReservationsOpen, setIsMyReservationsOpen] = useState(false);
   const [isQRCodeOpen, setIsQRCodeOpen] = useState(false);
+  const [isShareOpen, setIsShareOpen] = useState(false);
   const [selectedDishForModal, setSelectedDishForModal] = useState<MenuItem | null>(null);
 
   // Sync cart to localStorage
@@ -158,6 +160,7 @@ export default function App() {
         onOpenReservation={() => setIsReservationOpen(true)}
         onOpenMyReservations={() => setIsMyReservationsOpen(true)}
         onOpenQRCode={() => setIsQRCodeOpen(true)}
+        onOpenShare={() => setIsShareOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -166,6 +169,7 @@ export default function App() {
         <Hero
           onOpenReservation={() => setIsReservationOpen(true)}
           onOpenQRCode={() => setIsQRCodeOpen(true)}
+          onOpenShare={() => setIsShareOpen(true)}
         />
 
         {/* Especial Fiestas de Navidad & Fin de Año */}
@@ -211,6 +215,7 @@ export default function App() {
         onOpenReservation={() => setIsReservationOpen(true)}
         onOpenMyReservations={() => setIsMyReservationsOpen(true)}
         onOpenQRCode={() => setIsQRCodeOpen(true)}
+        onOpenShare={() => setIsShareOpen(true)}
       />
 
       {/* Modals & Slide-over Drawers */}
@@ -255,11 +260,23 @@ export default function App() {
       <QRCodeModal
         isOpen={isQRCodeOpen}
         onClose={() => setIsQRCodeOpen(false)}
+        onOpenShare={() => {
+          setIsQRCodeOpen(false);
+          setIsShareOpen(true);
+        }}
+      />
+
+      {/* Dedicated Social Share Modal */}
+      <ShareModal
+        isOpen={isShareOpen}
+        onClose={() => setIsShareOpen(false)}
+        onOpenQRCode={() => setIsQRCodeOpen(true)}
       />
 
       {/* Persistent Floating WhatsApp Access Widget (desktop) */}
       <FloatingWhatsAppWidget
         onOpenReservation={() => setIsReservationOpen(true)}
+        onOpenShare={() => setIsShareOpen(true)}
       />
 
       {/* Mobile Sticky Bottom Navigation Bar */}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Calendar, Phone, Menu as MenuIcon, X, BookmarkCheck, QrCode, Sparkles, MessageCircle, ExternalLink, Instagram, Star } from 'lucide-react';
+import { ShoppingBag, Calendar, Phone, Menu as MenuIcon, X, BookmarkCheck, QrCode, Sparkles, MessageCircle, ExternalLink, Instagram, Star, Share2 } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/menuData';
 import { YhapeLogo } from './YhapeLogo';
 
@@ -9,6 +9,7 @@ interface HeaderProps {
   onOpenReservation: () => void;
   onOpenMyReservations: () => void;
   onOpenQRCode: () => void;
+  onOpenShare: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -17,6 +18,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenReservation,
   onOpenMyReservations,
   onOpenQRCode,
+  onOpenShare,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -145,6 +147,17 @@ export const Header: React.FC<HeaderProps> = ({
               <MessageCircle className="w-4 h-4 text-emerald-700 fill-emerald-600" />
               <span>Catálogo WhatsApp</span>
             </a>
+
+            {/* Share Website Button (Social Networks) */}
+            <button
+              onClick={onOpenShare}
+              aria-label="Compartir restaurante en redes sociales"
+              title="Compartir página en WhatsApp, Facebook, X..."
+              className="p-2 sm:p-2.5 rounded-xl border border-emerald-400 bg-emerald-50 text-emerald-900 hover:bg-emerald-100 hover:border-emerald-500 transition-all cursor-pointer flex items-center gap-1.5 text-xs font-black shadow-2xs hover:scale-105"
+            >
+              <Share2 className="w-4 h-4 text-emerald-700" />
+              <span className="hidden xl:inline">Compartir</span>
+            </button>
 
             {/* QR Code Trigger Button */}
             <button
@@ -300,6 +313,17 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Calendar className="w-4 h-4 text-amber-300" />
               <span>Reservar Mesa por WhatsApp</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenShare();
+              }}
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-100 to-teal-100 border-2 border-emerald-400 text-emerald-950 text-xs font-black uppercase tracking-wider"
+            >
+              <Share2 className="w-4 h-4 text-emerald-700" />
+              <span>Compartir en Redes Sociales</span>
             </button>
 
             <button

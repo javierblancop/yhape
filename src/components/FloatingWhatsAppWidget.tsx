@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { MessageCircle, ShoppingBag, Calendar, X, Sparkles, Phone, ExternalLink } from 'lucide-react';
+import { MessageCircle, ShoppingBag, Calendar, X, Sparkles, Phone, ExternalLink, Share2 } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/menuData';
 
 interface FloatingWhatsAppWidgetProps {
   onOpenReservation: () => void;
+  onOpenShare?: () => void;
 }
 
 export const FloatingWhatsAppWidget: React.FC<FloatingWhatsAppWidgetProps> = ({
   onOpenReservation,
+  onOpenShare,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -102,7 +104,36 @@ export const FloatingWhatsAppWidget: React.FC<FloatingWhatsAppWidgetProps> = ({
               </span>
             </button>
 
-            {/* Option 3: Direct WhatsApp chat */}
+            {/* Option 3: Share website with friends */}
+            {onOpenShare && (
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  onOpenShare();
+                }}
+                className="w-full flex items-center justify-between p-3 rounded-2xl bg-white hover:bg-amber-50 border border-amber-200 hover:border-amber-400 shadow-xs transition-all cursor-pointer"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center shrink-0">
+                    <Share2 className="w-5 h-5 text-amber-700" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-xs font-black text-stone-900">
+                      Compartir en Redes Sociales
+                    </div>
+                    <div className="text-[11px] text-stone-500">
+                      WhatsApp, Facebook, X, Telegram...
+                    </div>
+                  </div>
+                </div>
+                <span className="text-xs font-bold text-amber-700">
+                  Compartir ➔
+                </span>
+              </button>
+            )}
+
+            {/* Option 4: Direct WhatsApp chat */}
             <a
               href="https://wa.me/34673706031?text=Hola%20YHAPE%2C%20quisiera%20hacer%20una%20consulta%20o%20pedido%20para%20vuestro%20local%20en%20Calle%20La%20Nogalera"
               target="_blank"

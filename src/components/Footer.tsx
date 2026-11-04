@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Phone, MapPin, MessageCircle, Heart, QrCode, Sparkles, ShoppingBag, ExternalLink, Instagram, Star } from 'lucide-react';
+import { Calendar, Phone, MapPin, MessageCircle, Heart, QrCode, Sparkles, ShoppingBag, ExternalLink, Instagram, Star, Share2 } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/menuData';
 import { YhapeLogo } from './YhapeLogo';
 
@@ -7,12 +7,14 @@ interface FooterProps {
   onOpenReservation: () => void;
   onOpenMyReservations: () => void;
   onOpenQRCode: () => void;
+  onOpenShare?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ 
   onOpenReservation, 
   onOpenMyReservations,
   onOpenQRCode,
+  onOpenShare,
 }) => {
   return (
     <footer className="bg-gradient-to-b from-stone-900 via-stone-950 to-black text-stone-300 pt-16 pb-12 border-t-8 border-amber-400">
@@ -31,7 +33,7 @@ export const Footer: React.FC<FooterProps> = ({
               Restaurante de comida saludable, picoteo y brunch brasileño en Calle La Nogalera 105, Torremolinos, Málaga.
             </p>
 
-            {/* Social links row including Reel */}
+            {/* Social links row including Reel and Share */}
             <div className="flex flex-wrap items-center gap-3 pt-1">
               <a
                 href={RESTAURANT_INFO.social.instagramReelUrl}
@@ -43,6 +45,17 @@ export const Footer: React.FC<FooterProps> = ({
                 <span>Ver Reel en Instagram</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
+
+              {onOpenShare && (
+                <button
+                  type="button"
+                  onClick={onOpenShare}
+                  className="bg-emerald-600 hover:bg-emerald-500 text-white px-3.5 py-1.5 rounded-xl font-black text-xs inline-flex items-center gap-2 shadow-md transition-transform hover:scale-105 cursor-pointer"
+                >
+                  <Share2 className="w-4 h-4" />
+                  <span>Compartir en Redes</span>
+                </button>
+              )}
 
               <a
                 href="#resenas"

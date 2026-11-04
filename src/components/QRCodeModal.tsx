@@ -12,16 +12,18 @@ import {
   MapPin, 
   MessageCircle,
   UtensilsCrossed,
-  Layers
+  Layers,
+  Share2
 } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/menuData';
 
 interface QRCodeModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenShare?: () => void;
 }
 
-export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose }) => {
+export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose, onOpenShare }) => {
   if (!isOpen) return null;
 
   // The public hosted URL from AI Studio Cloud Run metadata
@@ -310,25 +312,39 @@ export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose }) => 
             </div>
           </div>
 
-          {/* Action Buttons: Print Table Card & Download QR PNG */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+          {/* Action Buttons: Print Table Card & Download QR PNG & Share */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
             <button
               type="button"
               onClick={handlePrint}
-              className="flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl text-xs font-black uppercase tracking-wider text-stone-950 bg-amber-400 hover:bg-yellow-300 shadow-md transition-all cursor-pointer transform hover:scale-102 border border-amber-300"
+              className="flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs font-black uppercase tracking-wider text-stone-950 bg-amber-400 hover:bg-yellow-300 shadow-md transition-all cursor-pointer transform hover:scale-102 border border-amber-300"
             >
               <Printer className="w-4 h-4 text-stone-950" />
-              <span>Imprimir Cartel de Mesa (A4 / A5)</span>
+              <span>Imprimir Cartel</span>
             </button>
 
             <button
               type="button"
               onClick={handleDownloadQR}
-              className="flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl text-xs font-black uppercase tracking-wider text-white bg-emerald-700 hover:bg-emerald-800 shadow-md transition-all cursor-pointer transform hover:scale-102"
+              className="flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs font-black uppercase tracking-wider text-white bg-emerald-700 hover:bg-emerald-800 shadow-md transition-all cursor-pointer transform hover:scale-102"
             >
               <Download className="w-4 h-4" />
-              <span>Descargar Imagen QR (PNG)</span>
+              <span>Descargar PNG</span>
             </button>
+
+            {onOpenShare && (
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  onOpenShare();
+                }}
+                className="flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs font-black uppercase tracking-wider text-emerald-950 bg-emerald-100 hover:bg-emerald-200 border-2 border-emerald-400 shadow-md transition-all cursor-pointer transform hover:scale-102"
+              >
+                <Share2 className="w-4 h-4 text-emerald-700" />
+                <span>Compartir en Redes</span>
+              </button>
+            )}
           </div>
 
         </div>

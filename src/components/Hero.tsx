@@ -12,7 +12,8 @@ import {
   Star, 
   Play, 
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Share2
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { RESTAURANT_INFO } from '../data/menuData';
@@ -22,6 +23,7 @@ import { ChristmasGarland } from './ChristmasGarland';
 interface HeroProps {
   onOpenReservation: () => void;
   onOpenQRCode?: () => void;
+  onOpenShare?: () => void;
 }
 
 interface HeroSlide {
@@ -121,7 +123,7 @@ const MARQUEE_ITEMS = [
   { icon: '🥩', text: 'Calabresa Acebolada con Farofa', tag: 'Tapa Boteco' },
 ];
 
-export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenReservation, onOpenShare }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -295,6 +297,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation }) => {
                 <Utensils className="w-4 h-4 text-emerald-700" />
                 <span>Ver Menú &amp; Carta</span>
               </a>
+
+              {/* Share Website Button (Social Networks) */}
+              {onOpenShare && (
+                <button
+                  type="button"
+                  onClick={onOpenShare}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 sm:py-4 text-xs sm:text-sm font-black uppercase tracking-wider text-emerald-950 bg-gradient-to-r from-emerald-100 to-teal-100 hover:from-emerald-200 hover:to-teal-200 border-2 border-emerald-400 rounded-2xl transition-all cursor-pointer whitespace-nowrap shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                >
+                  <Share2 className="w-4 h-4 text-emerald-700" />
+                  <span>Compartir Página</span>
+                </button>
+              )}
 
               {/* Christmas Special Quick Action (Bigger & High Contrast) */}
               <a
