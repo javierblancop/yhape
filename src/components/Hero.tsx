@@ -13,7 +13,8 @@ import {
   Play, 
   ChevronLeft,
   ChevronRight,
-  Share2
+  Share2,
+  QrCode
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { RESTAURANT_INFO } from '../data/menuData';
@@ -123,7 +124,7 @@ const MARQUEE_ITEMS = [
   { icon: '🥩', text: 'Calabresa Acebolada con Farofa', tag: 'Tapa Boteco' },
 ];
 
-export const Hero: React.FC<HeroProps> = ({ onOpenReservation, onOpenShare }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenReservation, onOpenQRCode, onOpenShare }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -307,6 +308,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation, onOpenShare }) =>
                 >
                   <Share2 className="w-4 h-4 text-emerald-700" />
                   <span>Compartir Página</span>
+                </button>
+              )}
+
+              {/* QR Code Table Printing Button for WhatsApp orders */}
+              {onOpenQRCode && (
+                <button
+                  type="button"
+                  onClick={onOpenQRCode}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 sm:py-4 text-xs sm:text-sm font-black uppercase tracking-wider text-amber-950 bg-gradient-to-r from-amber-100 to-yellow-100 hover:from-amber-200 hover:to-yellow-200 border-2 border-amber-400 rounded-2xl transition-all cursor-pointer whitespace-nowrap shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                  title="Generar e imprimir cartel con código QR para mesas que abre el pedido de WhatsApp"
+                >
+                  <QrCode className="w-4 h-4 text-amber-700" />
+                  <span>Imprimir QR Mesas WhatsApp</span>
                 </button>
               )}
 

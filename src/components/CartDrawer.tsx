@@ -26,6 +26,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   if (!isOpen) return null;
 
   const [orderType, setOrderType] = useState<OrderType>('local');
+  const [tableNumber, setTableNumber] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('mesa') || params.get('table') || '';
+    }
+    return '';
+  });
   const [clientName, setClientName] = useState('');
   const [clientPhone, setClientPhone] = useState('');
   const [deliveryAddress, setDeliveryAddress] = useState('');
@@ -43,6 +50,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
     let msg = `*¡HOLA YHAPE! QUIERO HACER UN PEDIDO*\n\n`;
     msg += `*Tipo de Pedido:* ${orderTypeText}\n`;
+    if (orderType === 'local' && tableNumber) {
+      msg += `*Mesa en el Local:* ${tableNumber}\n`;
+    }
     if (clientName) msg += `*Cliente:* ${clientName}\n`;
     if (clientPhone) msg += `*Teléfono:* ${clientPhone}\n`;
     if (orderType === 'delivery' && deliveryAddress) {
@@ -333,6 +343,24 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       className="w-full text-xs px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl focus:bg-white focus:border-emerald-600 font-medium"
                     />
                   </div>
+
+                  {orderType === 'local' && (
+                    <div className="p-2.5 bg-emerald-50 rounded-xl border border-emerald-200">
+                      <label className="block text-[11px] font-bold text-emerald-950 mb-0.5">
+                        📍 Nº de Mesa / Ubicación en Local:
+                      </label>
+                      <input
+                        type="text"
+                        value={tableNumber}
+                        onChange={(e) => setTableNumber(e.target.value)}
+                        placeholder="Ej: Mesa 1, Terraza 2, Barra..."
+                        className="w-full text-xs px-3 py-2 bg-white border border-emerald-300 rounded-lg focus:outline-hidden focus:border-emerald-600 font-bold text-stone-900"
+                      />
+                      <span className="text-[10px] text-emerald-700 mt-1 block">
+                        Si has escaneado el QR de la mesa, se incluye automáticamente en tu pedido.
+                      </span>
+                    </div>
+                  )}
 
                   {orderType === 'delivery' && (
                     <div>

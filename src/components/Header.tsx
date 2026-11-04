@@ -162,12 +162,12 @@ export const Header: React.FC<HeaderProps> = ({
             {/* QR Code Trigger Button */}
             <button
               onClick={onOpenQRCode}
-              aria-label="Ver Código QR y enlace para compartir"
-              title="Código QR para mesas y enlace público"
+              aria-label="Código de la mesa para imprimir que va al pedido de WhatsApp"
+              title="Imprimir código QR de mesa para pedidos por WhatsApp"
               className="p-2 sm:p-2.5 rounded-xl border border-amber-300 bg-amber-50 text-amber-900 hover:bg-amber-100 hover:border-amber-400 transition-all cursor-pointer flex items-center gap-1.5 text-xs font-bold shadow-2xs"
             >
               <QrCode className="w-4 h-4 text-amber-700" />
-              <span className="hidden xl:inline">Código QR</span>
+              <span className="hidden xl:inline">QR Mesas WhatsApp</span>
             </button>
 
             {/* Cart Button with vibrant badge */}
@@ -331,10 +331,10 @@ export const Header: React.FC<HeaderProps> = ({
                 setMobileMenuOpen(false);
                 onOpenQRCode();
               }}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-stone-300 text-stone-700 text-xs font-bold"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border-2 border-amber-400 bg-amber-50 text-amber-950 text-xs font-black uppercase tracking-wider"
             >
-              <QrCode className="w-4 h-4 text-amber-600" />
-              <span>Ver Código QR para Mesa</span>
+              <QrCode className="w-4 h-4 text-amber-700" />
+              <span>Imprimir QR Mesa (Pedido WhatsApp)</span>
             </button>
           </div>
         </div>
