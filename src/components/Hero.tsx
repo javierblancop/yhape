@@ -267,7 +267,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenReservation, onOpenQRCode, onO
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 pt-1">
               {/* Primary: WhatsApp Catalog direct link with shimmer */}
               <a
                 href={RESTAURANT_INFO.whatsappCatalogUrl}

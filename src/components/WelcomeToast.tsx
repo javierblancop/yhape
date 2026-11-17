@@ -16,10 +16,15 @@ export const WelcomeToast: React.FC<WelcomeToastProps> = ({ onNavigateToMenu }) 
       return;
     }
 
-    // Trigger toast after exactly 3 seconds
+    // Mobile: no popup over the content (the bottom bar already links to the menu)
+    if (window.matchMedia('(max-width: 639px)').matches) {
+      return;
+    }
+
+    // Trigger toast after 10 seconds, once the visitor has seen the hero
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 3000);
+    }, 10000);
 
     return () => clearTimeout(timer);
   }, []);

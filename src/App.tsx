@@ -13,7 +13,6 @@ import { CustomerReviews } from './components/CustomerReviews';
 import { LocationAndHours } from './components/LocationAndHours';
 import { Footer } from './components/Footer';
 import { FloatingWhatsAppWidget } from './components/FloatingWhatsAppWidget';
-import { WelcomeToast } from './components/WelcomeToast';
 import { FadeInSection } from './components/FadeInSection';
 import { PageIntroSplash } from './components/PageIntroSplash';
 import { MobileBottomNav } from './components/MobileBottomNav';
@@ -288,7 +287,7 @@ export default function App() {
       />
 
       {/* 3-Second Welcome Notification Toast */}
-      <WelcomeToast />
+      {/* Popup automático retirado: la Navidad sigue accesible desde banner, menú y barra inferior */}
 
     </div>
   );
