@@ -23,7 +23,7 @@ export const ChristmasDecor: React.FC = () => {
       {/* Floating Toggle Button */}
       <button
         onClick={() => setDecorVisible(!decorVisible)}
-        className="fixed bottom-20 left-3 sm:bottom-6 sm:left-6 z-40 bg-stone-950/90 hover:bg-stone-900 text-amber-300 hover:text-amber-200 border-2 border-red-500/80 p-2 sm:px-3 sm:py-2 rounded-2xl shadow-2xl backdrop-blur-md text-[11px] font-black flex items-center gap-1.5 transition-all transform hover:scale-105 cursor-pointer pointer-events-auto"
+        className="fixed bottom-20 left-3 sm:bottom-6 sm:left-6 z-40 max-sm:hidden bg-stone-950/90 hover:bg-stone-900 text-amber-300 hover:text-amber-200 border-2 border-red-500/80 p-2 sm:px-3 sm:py-2 rounded-2xl shadow-2xl backdrop-blur-md text-[11px] font-black flex items-center gap-1.5 transition-all transform hover:scale-105 cursor-pointer pointer-events-auto"
         title="Mostrar u ocultar motivos de Navidad"
         aria-label="Alternar motivos de Navidad"
       >
@@ -44,7 +44,7 @@ export const ChristmasDecor: React.FC = () => {
           {/* ======================================================== */}
           
           {/* Top-Right Christmas Pine Branch & Baubles */}
-          <div className="absolute top-0 right-0 w-44 sm:w-72 h-44 sm:h-72 opacity-90 select-none pointer-events-none transition-all">
+          <div className="absolute top-0 right-0 w-16 sm:w-60 h-16 sm:h-60 opacity-90 select-none pointer-events-none transition-all">
             <ChristmasGarland
               variant="corner-right"
               className="w-full h-full filter drop-shadow-[0_4px_12px_rgba(220,38,38,0.4)]"
@@ -52,7 +52,7 @@ export const ChristmasDecor: React.FC = () => {
           </div>
 
           {/* Top-Left Christmas Pine Branch & Baubles */}
-          <div className="absolute top-0 left-0 w-44 sm:w-72 h-44 sm:h-72 opacity-90 select-none pointer-events-none transition-all">
+          <div className="absolute top-0 left-0 w-16 sm:w-60 h-16 sm:h-60 opacity-90 select-none pointer-events-none transition-all">
             <ChristmasGarland
               variant="corner-left"
               className="w-full h-full filter drop-shadow-[0_4px_12px_rgba(34,197,94,0.4)]"
@@ -100,7 +100,7 @@ export const ChristmasDecor: React.FC = () => {
               duration: 5.5,
               ease: 'easeInOut',
             }}
-            className="absolute top-36 sm:top-44 left-3 sm:left-10 select-none z-30"
+            className="absolute top-36 sm:top-44 left-3 sm:left-10 select-none z-30 hidden 2xl:block"
           >
             <div className="relative group">
               <span className="text-5xl sm:text-7xl filter drop-shadow-[0_0_25px_rgba(34,197,94,0.95)] drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)]">
@@ -128,7 +128,7 @@ export const ChristmasDecor: React.FC = () => {
               duration: 6.5,
               ease: 'easeInOut',
             }}
-            className="absolute top-44 sm:top-52 right-3 sm:right-12 select-none z-30"
+            className="absolute top-44 sm:top-52 right-3 sm:right-12 select-none z-30 hidden 2xl:block"
           >
             <div className="relative">
               <span className="text-5xl sm:text-7xl filter drop-shadow-[0_0_25px_rgba(239,68,68,0.95)] drop-shadow-[0_6px_16px_rgba(0,0,0,0.4)]">
@@ -156,7 +156,7 @@ export const ChristmasDecor: React.FC = () => {
               ease: 'easeInOut',
               delay: 0.5,
             }}
-            className="absolute top-[52%] left-3 sm:left-14 select-none z-30 hidden md:block"
+            className="absolute top-[52%] left-3 sm:left-14 select-none z-30 hidden 2xl:block"
           >
             <div className="relative flex items-center gap-1">
               <span className="text-4xl sm:text-6xl filter drop-shadow-[0_0_20px_rgba(245,158,11,0.9)] drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
@@ -184,7 +184,7 @@ export const ChristmasDecor: React.FC = () => {
               ease: 'easeInOut',
               delay: 1.2,
             }}
-            className="absolute top-[68%] right-3 sm:right-14 select-none z-30 hidden md:block"
+            className="absolute top-[68%] right-3 sm:right-14 select-none z-30 hidden 2xl:block"
           >
             <div className="flex items-center gap-1.5">
               <span className="text-4xl sm:text-6xl filter drop-shadow-[0_0_20px_rgba(255,255,255,0.9)]">
@@ -212,7 +212,7 @@ export const ChristmasDecor: React.FC = () => {
               ease: 'easeInOut',
               delay: 2,
             }}
-            className="absolute bottom-28 right-4 sm:right-20 select-none z-30"
+            className="absolute bottom-28 right-4 sm:right-20 select-none z-30 hidden 2xl:block"
           >
             <div className="flex items-center gap-2">
               <span className="text-3xl sm:text-5xl filter drop-shadow-[0_0_15px_rgba(250,204,21,0.9)]">
