@@ -82,7 +82,7 @@ export const Header: React.FC<HeaderProps> = ({
           </a>
 
           {/* Zone 2: Navigation links */}
-          <nav className="hidden lg:flex items-center gap-4 text-sm font-bold text-stone-700">
+          <nav className="hidden items-center gap-4 text-sm font-bold text-stone-700">
             <a 
               href="#navidad" 
               className="text-white bg-gradient-to-r from-red-600 via-amber-500 to-emerald-600 hover:from-red-700 hover:to-emerald-700 px-3.5 py-2 rounded-2xl transition-all whitespace-nowrap shrink-0 flex items-center gap-2 font-black shadow-md transform hover:scale-105 border-2 border-amber-300 ring-2 ring-red-200/60"
@@ -197,7 +197,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Mobile menu trigger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-xl transition-colors cursor-pointer"
+              className="p-2 text-stone-600 hover:text-stone-900 hover:bg-stone-100 rounded-xl transition-colors cursor-pointer"
               aria-label="Abrir menú de navegación"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
@@ -210,7 +210,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-amber-200 bg-white/98 backdrop-blur-md px-4 pt-3 pb-6 space-y-4 shadow-xl">
+        <div className="border-t border-amber-200 bg-white/98 backdrop-blur-md px-4 pt-3 pb-6 space-y-4 shadow-xl">
           <div className="p-3 bg-gradient-to-r from-emerald-50 to-amber-50 rounded-2xl border border-emerald-200 text-xs space-y-2">
             <div className="font-bold text-emerald-950 flex items-center gap-1.5">
               <MessageCircle className="w-4 h-4 text-emerald-700" />
